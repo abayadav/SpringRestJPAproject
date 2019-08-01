@@ -33,7 +33,7 @@ public class AccountController {
 	@PostMapping(value="/save",consumes={"application/xml","application/json"})
     public ResponseEntity<?> save(@RequestBody @Valid Account acc,BindingResult result){
 
-		System.out.println("In cont:" +acc);
+		
 		
 		if(result.hasErrors()){
 			
