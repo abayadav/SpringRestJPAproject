@@ -3,6 +3,7 @@ package com.yash.sevice;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,14 @@ public class StudentServiceImpl implements StudentService {
 	public void deleteStudent(int id) {
 		
 		 studentRepository.deleteById(id);
+		
+	}
+
+	@Transactional
+	@Override
+	public void updateName(Student st) {
+		
+		studentRepository.save(st);
 		
 	}
 

@@ -19,6 +19,7 @@ public interface StudentService {
 	
 	public void deleteStudent(int id);
 	
+	public void updateName(Student st);
 	
 	
 

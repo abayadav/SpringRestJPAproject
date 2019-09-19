@@ -14,6 +14,9 @@ import com.yash.pojo.Account;
 
 @Repository
 public class AccountDao {
+	
+	
+
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -76,6 +79,15 @@ public class AccountDao {
 		 return 1;
 
 		
+	}
+	
+	public int updateAccName(Account acc,Integer id){
+		
+	    System.out.println(acc.getAccName());
+		
+		entityManager.merge(acc);
+		
+		return 1;
 	}
 
 }

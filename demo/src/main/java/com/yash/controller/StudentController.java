@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -69,6 +70,15 @@ public class StudentController {
 		return new ResponseEntity<T>(HttpStatus.ACCEPTED);
 
 	}
+	
+	@PatchMapping("/updateName")
+	public <T> ResponseEntity<T> updateStudentName(@RequestBody Student stDto, BindingResult result) {
+
+		service.updateName(stDto);
+
+		return new ResponseEntity<T>(HttpStatus.ACCEPTED);
+
+	}
 
 	@DeleteMapping("/deleteStudentById/{id}")
 	public String deleteStudent(@PathVariable("id") int id) {
@@ -76,5 +86,8 @@ public class StudentController {
 		service.deleteStudent(id);
 		return "deleted";
 	}
+	
+	
+	
 
 }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -54,7 +55,7 @@ public class AccountController {
 	}
 	
 	
-	@GetMapping(value="/getAllAccount", produces={"application/xml","application/json"})
+	@GetMapping(value="/getAllAccount", produces={"application/json"})
 	public List<Account> getAll(){
 
 		return accountService.getAll();
@@ -78,6 +79,15 @@ public class AccountController {
 			return accountService.deleteAccount(acc);
 		}
 	}
+	
+	@PatchMapping(value="/updateName/{id}", produces={"application/xml","application/json"},consumes={"application/xml","application/json"})
+	public int updateName(@RequestBody Account acc,@PathVariable ("id") Integer id){
+
+		System.out.println("In dfdffvgfv");
+		return accountService.updateByName(acc, id);
+	}
+	
+	
 	
 	
 }
